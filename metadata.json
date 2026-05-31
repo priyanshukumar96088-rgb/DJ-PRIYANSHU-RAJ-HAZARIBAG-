@@ -1,0 +1,6 @@
+{
+  "name": "DJ PRIYANSHU RAJ HAZARIBAG",
+  "description": "The official dynamic web platform for DJ Priyanshu Raj Hazaribag featuring Bhojpuri EDM, Bhakti DJ mix, Nagpuri vibration dance beats, and heavy-bass DJ setup competition mixes.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

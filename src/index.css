@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, monospace;
+}
+
+/* Base style resets */
+body {
+  background-color: #0d0d0d;
+  color: #f5f5f5;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom glowing scrollbars for list items queue */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e1e1e;
+  border-radius: 9999px;
+  border: 1px solid #10b981;
+}
+
+/* Custom background mesh */
+.bg-charcoal-900 {
+  background-color: #121212;
+}
+
+.bg-charcoal-950 {
+  background-color: #090909;
+}
