@@ -52,18 +52,32 @@ export default function App() {
   useEffect(() => {
     try {
       const stored = localStorage.getItem('dj_all_tracks');
+      let loadedTracks = INITIAL_TRACKS;
       if (stored) {
         const parsed = JSON.parse(stored) as Track[];
         if (parsed && parsed.length > 0) {
-          setTracks(parsed);
-          setCurrentTrack(parsed[0]);
+          loadedTracks = parsed;
+        }
+      }
+      setTracks(loadedTracks);
+      if (!stored) {
+        localStorage.setItem('dj_all_tracks', JSON.stringify(INITIAL_TRACKS));
+      }
+
+      // Support shareable links: auto-select track if provided in query param
+      const params = new URLSearchParams(window.location.search);
+      const trackIdParam = params.get('track');
+      if (trackIdParam) {
+        const sharedTrack = loadedTracks.find((t) => t.id === trackIdParam);
+        if (sharedTrack) {
+          setCurrentTrack(sharedTrack);
+          setIsPlaying(true);
           return;
         }
       }
-      setTracks(INITIAL_TRACKS);
-      localStorage.setItem('dj_all_tracks', JSON.stringify(INITIAL_TRACKS));
-      if (INITIAL_TRACKS.length > 0) {
-        setCurrentTrack(INITIAL_TRACKS[0]);
+
+      if (loadedTracks.length > 0) {
+        setCurrentTrack(loadedTracks[0]);
       }
     } catch (e) {
       setTracks(INITIAL_TRACKS);
